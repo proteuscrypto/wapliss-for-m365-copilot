@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.4/schema.json",
+  "schema_version": "v2.4",
+  "name_for_human": "Wapliss WhatsApp",
+  "description_for_human": "Read and send your own WhatsApp messages with Wapliss.",
+  "description_for_model": "Wapliss gives access to the signed-in user's own WhatsApp account. Use it to list or find chats and groups, read chat history, read group members, get the latest received or sent messages, check the Wapliss account, and send text, image, document, audio, video, location, contact, poll or forwarded messages to one recipient the user named. Sending tools change state and cannot be recalled: confirm the recipient and content when ambiguous. Never send bulk or unsolicited messages.",
+  "contact_email": "commerce@netdigitaltech.com",
+  "namespace": "wapliss",
+  "logo_url": "https://wapliss.com/icon-512.png",
+  "legal_info_url": "https://wapliss.com/terms-of-service",
+  "privacy_policy_url": "https://wapliss.com/privacy-policy",
+  "functions": [],
+  "runtimes": [
+    {
+      "type": "RemoteMCPServer",
+      "spec": {
+        "url": "https://wapliss.com/mcp/v1"
+      },
+      "run_for_functions": ["*"],
+      "auth": {
+        "type": "OAuthPluginVault",
+        "reference_id": "${{MCP_DA_AUTH_ID_WAPLISS}}"
+      }
+    }
+  ]
+}

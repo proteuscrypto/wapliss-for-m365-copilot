@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.30",
+  "version": "1.0.0",
+  "id": "${{TEAMS_APP_ID}}",
+  "developer": {
+    "name": "NetDigitalTech LLC",
+    "websiteUrl": "https://wapliss.com",
+    "privacyUrl": "https://wapliss.com/privacy-policy",
+    "termsOfUseUrl": "https://wapliss.com/terms-of-service"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Wapliss WhatsApp${{APP_NAME_SUFFIX}}",
+    "full": "Wapliss: your WhatsApp in Microsoft 365 Copilot"
+  },
+  "description": {
+    "short": "Read and send your own WhatsApp messages from Microsoft 365 Copilot.",
+    "full": "Wapliss connects your own WhatsApp account to Microsoft 365 Copilot through a remote MCP server with OAuth 2.1. Ask Copilot to list and read your chats and groups, summarize conversations, see your latest received or sent messages, and send text, images, documents, audio, video, locations, contacts and polls. Copilot always asks before sending, and bulk or unsolicited messaging is blocked. You need a Wapliss account (free plan available) and a phone linked once by scanning a QR code at wapliss.com. Wapliss uses WhatsApp Web multi-device and is not affiliated with Meta or Microsoft. A product of NetDigitalTech LLC."
+  },
+  "accentColor": "#16A34A",
+  "supportsChannelFeatures": "tier1",
+  "composeExtensions": [],
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "wapliss.com"
+  ]
+}

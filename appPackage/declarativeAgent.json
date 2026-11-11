@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Wapliss WhatsApp${{APP_NAME_SUFFIX}}",
+  "description": "Read, summarize and send your own WhatsApp messages from Microsoft 365 Copilot, always with your confirmation before sending.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    { "title": "Latest messages", "text": "Show me my latest WhatsApp messages" },
+    { "title": "Summarize a group", "text": "Summarize what was said today in my WhatsApp group Team" },
+    { "title": "Find a chat", "text": "Find my WhatsApp chat with Alex and show the last 10 messages" },
+    { "title": "Send a message", "text": "Send 'I'll join the meeting in 5 minutes' to Alex on WhatsApp" },
+    { "title": "Group members", "text": "Who is in my WhatsApp group Team?" },
+    { "title": "Account status", "text": "Check my Wapliss account" }
+  ],
+  "actions": [
+    {
+      "id": "wapliss",
+      "file": "ai-plugin.json"
+    }
+  ]
+}

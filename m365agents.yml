@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://aka.ms/m365-agents-toolkits/v1.13/yaml.schema.json
+# Wapliss WhatsApp for Microsoft 365 Copilot (declarative agent + remote MCP server).
+# Docs: https://aka.ms/teamsfx-actions
+version: v1.13
+
+environmentFolderPath: ./env
+
+provision:
+  # Creates the app in the Teams Developer Portal
+  - uses: teamsApp/create
+    with:
+      name: Wapliss WhatsApp${{APP_NAME_SUFFIX}}
+    writeToEnvironmentFile:
+      teamsAppId: TEAMS_APP_ID
+
+  # OAuth 2.1 with dynamic client registration (RFC 7591) against wapliss.com.
+  # The Enterprise token store registers the client and stores the secret; nothing to fill in.
+  - uses: dcr/register
+    with:
+      name: wapliss
+      appId: ${{TEAMS_APP_ID}}
+      applicableToApps: AnyApp
+      targetAudience: HomeTenant
+      mcpResourceUrl: https://wapliss.com/mcp/v1
+      targetUrlsShouldStartWith:
+        - https://wapliss.com/mcp/v1
+    writeToEnvironmentFile:
+      configurationId: MCP_DA_AUTH_ID_WAPLISS
+
+  - uses: teamsApp/zipAppPackage
+    with:
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputFolder: ./appPackage/build
+
+  - uses: teamsApp/validateAppPackage
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  - uses: teamsApp/update
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  # Makes the agent available in Microsoft 365 Copilot for the signed-in user (scope from env)
+  - uses: copilotAgent/publish
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      scope: ${{AGENT_SCOPE}}
+    writeToEnvironmentFile:
+      titleId: M365_TITLE_ID
+      appId: M365_APP_ID
+      shareLink: SHARE_LINK
+
+publish:
+  - uses: teamsApp/zipAppPackage
+    with:
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputFolder: ./appPackage/build
+  - uses: teamsApp/validateAppPackage
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+  - uses: teamsApp/update
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+  # Publishes the agent to the tenant app catalog (an admin approves it)
+  - uses: copilotAgent/publish
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      scope: tenant
+    writeToEnvironmentFile:
+      titleId: M365_PUBLISHED_TITLE_ID
+      appId: M365_PUBLISHED_APP_ID
