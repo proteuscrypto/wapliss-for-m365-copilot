@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.proteuscrypto/wapliss",
+  "title": "Wapliss WhatsApp",
+  "description": "Read, summarize and send your own WhatsApp messages from AI assistants (OAuth 2.1).",
+  "version": "1.0.0",
+  "websiteUrl": "https://wapliss.com/integrations",
+  "repository": {
+    "url": "https://github.com/proteuscrypto/wapliss-for-m365-copilot",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://wapliss.com/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://wapliss.com/mcp/v1"
+    }
+  ]
+}
