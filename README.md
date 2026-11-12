@@ -18,7 +18,7 @@
 
 <p align="center">
   <a href="https://wapliss.com/">Website</a> ·
-  <a href="https://wapliss.com/integrations">Integration guides</a> ·
+  <a href="https://wapliss.com/integrations#m365-copilot">Microsoft 365 Copilot guide</a> ·
   <a href="#install">Install</a> ·
   <a href="#example-prompts">Examples</a> ·
   <a href="#faq">FAQ</a>
@@ -105,15 +105,19 @@ python3 scripts/validate.py --live   # OAuth metadata and MCP 401 on wapliss.com
 
 ## Wapliss plugins
 
-| Assistant | Package |
-| --- | --- |
-| Claude | [wapliss-whatsapp-for-claude](https://github.com/proteuscrypto/wapliss-whatsapp-for-claude) |
-| ChatGPT | [wapliss-for-chatgpt](https://github.com/proteuscrypto/wapliss-for-chatgpt) |
-| Gemini | [wapliss-for-gemini](https://github.com/proteuscrypto/wapliss-for-gemini) |
-| DeepSeek | [wapliss-for-deepseek](https://github.com/proteuscrypto/wapliss-for-deepseek) |
-| GitHub Copilot | [wapliss-for-copilot](https://github.com/proteuscrypto/wapliss-for-copilot) |
-| Grok | [wapliss-for-grok](https://github.com/proteuscrypto/wapliss-for-grok) |
-| Microsoft 365 Copilot | this repository |
+Wapliss works the same way in every assistant: one account, one linked phone,
+the same 16 tools.
+
+| Assistant | Where it works | Format | Get it |
+| --- | --- | --- | --- |
+| Claude | Claude.ai, Claude Desktop, Claude Code | Custom connector / Claude plugin | [github.com/proteuscrypto/wapliss-whatsapp-for-claude](https://github.com/proteuscrypto/wapliss-whatsapp-for-claude) |
+| ChatGPT | ChatGPT web and desktop | ChatGPT plugin (Agent Plugins) / custom MCP connector | [github.com/proteuscrypto/wapliss-for-chatgpt](https://github.com/proteuscrypto/wapliss-for-chatgpt) |
+| Gemini | Gemini app, Gemini CLI, Antigravity | Connected app, Gemini CLI extension, Antigravity plugin | [github.com/proteuscrypto/wapliss-for-gemini](https://github.com/proteuscrypto/wapliss-for-gemini) |
+| DeepSeek | DeepSeek Harness (dsh) | dsh bundle | [github.com/proteuscrypto/wapliss-for-deepseek](https://github.com/proteuscrypto/wapliss-for-deepseek) |
+| GitHub Copilot | VS Code, Copilot CLI, Copilot app | Agent Plugins 1.0 | [github.com/proteuscrypto/wapliss-for-copilot](https://github.com/proteuscrypto/wapliss-for-copilot) |
+| Grok | Grok Build, grok.com connectors, xAI API | Grok Build plugin / custom MCP connector | [github.com/proteuscrypto/wapliss-for-grok](https://github.com/proteuscrypto/wapliss-for-grok) |
+| **Microsoft 365 Copilot** | Microsoft 365 Copilot (work accounts), Teams, Outlook | Declarative agent with a remote MCP action | this repository |
+| Any MCP client | Clients with remote MCP (Streamable HTTP) | OAuth 2.1, or a personal API key | [wapliss.com/integrations#mcp](https://wapliss.com/integrations#mcp) |
 
 ## License
 
